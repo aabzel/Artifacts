@@ -1,0 +1,178 @@
+strict digraph graphname {
+    rankdir=LR;
+    splines=ortho
+    node [shape="box"];
+FPU->CORTEX_M4
+THUMB->CORTEX_M4
+SYSTICK->CORTEX_M4
+subgraph cluster_mcal{
+    label = "MCAL";
+    style=filled;
+    color=oldlace;
+    DMA [shape = note][fillcolor = aquamarine][style="filled"]
+    FLASH [shape = note][fillcolor = aquamarine][style="filled"]
+    GPIO [shape = note][fillcolor = aquamarine][style="filled"]
+    SDIO [shape = note][fillcolor = aquamarine][style="filled"]
+    TIMER [shape = note][fillcolor = aquamarine][style="filled"]
+    UART [shape = note][fillcolor = aquamarine][style="filled"]
+    USB [shape = note][fillcolor = aquamarine][style="filled"]
+}
+REG->DMA
+TIME->DMA
+ARRAY->FLASH
+REG->FLASH
+INTERVAL->FLASH
+TIME->GPIO
+REG->GPIO
+MCU->GPIO
+CRC->NVS
+FLASH->NVS
+INTERVAL->NVS
+REG->CLOCK
+CLOCK->TIMER
+NVIC->TIMER
+REG->TIMER
+MATH->TIMER
+TIMER->TIME
+TIME->UART
+GPIO->UART
+NVIC->UART
+FIFO->UART
+USB->HID
+USB->STREAM
+subgraph cluster_adc{
+    label = "ADT";
+    style=filled;
+    color=oldlace;
+        ARRAY [shape = note][fillcolor = aqua][style="filled"]
+        FIFO [shape = note][fillcolor = aqua][style="filled"]
+        HASHSET [shape = note][fillcolor = aqua][style="filled"]
+        LIFO [shape = note][fillcolor = aqua][style="filled"]
+}
+RAM->ARRAY [color=blue]
+RAM->FIFO
+RAM->HASHSET [color=blue]
+CRC32->HASHSET [color=blue]
+RAM->CRC32 [color=blue]
+RAM->LIFO [color=blue]
+subgraph cluster_Connectivity{
+    label = "Connectivity";
+    style=filled;
+    color=oldlace;
+    STREAM
+    LOG
+subgraph cluster_Interfaces{
+    label = "Interfaces";
+    color=red
+}
+subgraph cluster_protocols{
+    label = "Protocols";
+    style=filled;
+    color=oldlace;
+        CLI;
+}
+    UART->STREAM [color=chartreuse]
+    USB_DEVICE->STREAM [color=chartreuse]
+    FIFO->STRING_READER [color=aqua]
+    STRING->CLI [color=aqua]
+    STRING_READER->CLI [color=aqua]
+    STREAM->CLI [color=aqua]
+    LOG->CLI [color=aqua]
+    CSV->CLI [color=aqua]
+}
+TIME->LOG
+STREAM->LOG
+FIFO->LOG
+UART->LOG
+subgraph cluster_control{
+    label = "Control";
+    style=filled;
+    color=oldlace;
+BOOT
+DEBUGGER
+FREE_RTOS
+INDICATION
+LED
+RTOS
+SUPER_CYCLE
+SYSTEM
+TASK
+}
+PARAM->BOOT
+FLASH->BOOT
+FLASH->DEBUGGER
+SYSTICK->FREE_RTOS
+SUPER_CYCLE->FREE_RTOS
+    LED_MONO->INDICATION
+GPIO->LED
+GPIO->LED_MONO
+TIME->LED_MONO
+MATH->LED_MONO
+TIME->LOG
+STREAM->LOG
+FIFO->LOG
+UART->LOG
+SYSTICK->RTOS
+TASK->SUPER_CYCLE
+TASK [label="Scheduler"]
+LIMITER->TASK[color="green"]
+TIME->TASK[color="red"]
+FLASH->TASK[color="blue"]
+TIME->SOFTWARE_TIMER
+FLASH->SOFTWARE_TIMER
+SYSTICK->TIME
+subgraph cluster_Computing{
+    label = "Computing";
+    style=filled;
+    color=oldlace;
+    BASE64
+    CRC32
+    CRC8
+    CRC16
+    CRYPTO
+    LIMITER
+    INTERVAL
+    MATH
+    SHA256
+}
+RAM->BASE64
+RAM->CRC8
+RAM->CRC16
+RAM->CRC32
+TIME->LIMITER
+FLASH->LIMITER
+AES256_CBC->CRYPTO
+RAM->INTERVAL
+ASM->MATH
+FLOAT->MATH
+RAM->SHA256
+subgraph cluster_storage{
+    label = "Storage";
+    style=filled;
+    color=oldlace;
+    RAM
+    REG
+    FAT_FS
+    NVS
+    FLASH
+FLASH_FS
+    PARAM
+    XML
+}
+FLASH_FS->PARAM
+PARAM->NVRAM
+    SDIO->SD_CARD
+DISK->FAT_FS
+NVS->FLASH_FS
+CRC8->FLASH_FS
+FLASH->NVS
+LIFO->XML
+HASHSET->XML
+subgraph cluster_asics{
+    label = "ASICS";
+    style=filled;
+    color=oldlace;
+    MIC2026
+MIC2026
+}
+}
