@@ -10,7 +10,7 @@ set option=%option% -openprj%mcu_config%
 set option=%option% -open%firmware% 
 set option=%option% -programverify 
 set option=%option% -startapp  
-set option=%option% -exit
+::set option=%option% -exit
 
 %flash_tool% %option% 
 
