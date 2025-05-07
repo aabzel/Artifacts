@@ -7,10 +7,10 @@ set workspace_dir=%project_dir%\..\..\..\
 echo workspace_dir=%workspace_dir%
 
 echo project_dir=%project_dir%
-set artefact_hex=build\%project_name%.hex
+set artefact_hex=%project_name%.hex
 
 set PYTHON_BIN=python.exe
-set script=%workspace_dir%tool\tool_mik32\mik32-uploader\mik32_upload.py
+set script=mik32_upload.py
 echo script=%script%
 
 ::set script=mik32_upload.py

@@ -1,0 +1,28 @@
+strict digraph graphname {
+    rankdir=LR;
+    splines=ortho
+    node [shape="box"];
+REG->RV32IMC
+RV32IMC->CORE
+RV32IMC->K1948BK018
+    SPIFI [shape = note][fillcolor = aquamarine][style="filled"]
+REG->GPIO
+MCU->GPIO
+GPIO->SPIFI
+W25Q32JV->BOOT
+GPIO->LED
+GPIO->LED
+LED->LED_MONO
+BOOT->MBR
+SPIFI->MBR
+LED->MBR
+subgraph cluster_asics{
+    label = "ASICS";
+    style=filled;
+    color=oldlace;
+}
+GPIO->W25Q32JV
+TIME->W25Q32JV
+W25Q32JV->STORAGE
+  SPIFI->W25Q32JV
+}
