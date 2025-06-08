@@ -1,0 +1,7 @@
+Stage Number, Departure time, Departure date, Arrivaltime, Arrival date, from, to, cost, seller
+1, 03:00 , 14.6 , 4:30 , 14.6, San-Komarik, Grabenberg, 1450, blablacar 
+1, 18:00 , 14.6 , 20:20 , 14.6 , San-Komarik, Grabenberg, 780, blablacar
+1, 11:10 , 14.6 , 13:30 , 14.6 , San-Komarik, Grabenberg, 780, blablacar
+2, 21:00 , 14.6, 5:55 , 15.6 , Grabenberg, Los-Paganos, 3210, blablacar
+2, 21:00 , 14.6, 5:55 , 15.6 , Grabenberg, Los-Paganos, 3636, unitiki
+2, 20:30 , 14.6, 5:20 , 15.6 , Grabenberg , Los-Paganos, 3273, unitiki
