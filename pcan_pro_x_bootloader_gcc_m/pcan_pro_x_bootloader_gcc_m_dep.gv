@@ -1,0 +1,108 @@
+strict digraph graphname {
+    rankdir=LR;
+    splines=ortho
+    node [shape="box"];
+CLOCK->CORE
+REG->NVIC
+NVIC->ARM
+MICROCONTROLLER->NVIC
+INTERRUPT->NVIC
+CMSIS->NVIC
+REG->SYSTICK
+NVIC->SYSTICK
+CLOCK->SYSTICK
+INTERRUPT->SYSTICK
+MICROCONTROLLER->SYSTICK
+SYSTICK->TIME
+CORTEX_M4->NVIC
+REG->FPU
+FPU->CORTEX_M4
+THUMB->CORTEX_M4
+REG->CORTEX_M4
+NVIC->CORTEX_M4
+SYSTICK->CORTEX_M4
+CORTEX_M4->STM32F407ZG
+STM32F407ZG->MICROCONTROLLER
+    FLASH [shape = note][fillcolor = aquamarine][style="filled"]
+    GPIO [shape = note][fillcolor = aquamarine][style="filled"]
+    UART [shape = note][fillcolor = aquamarine][style="filled"]
+ARRAY->FLASH
+REG->FLASH
+INTERVAL->FLASH
+DEBUGGER->FLASH
+FLOAT->FLASH
+NVIC->FLASH
+REG->GPIO
+MCU->GPIO
+TIME->GPIO
+TIME->UART
+FIFO->UART
+DMA->UART [color = green]
+GPIO->UART [color = fuchsia]
+REG->UART [color = darkorange]
+INTERRUPT->UART [color = blue]
+subgraph cluster_adc{
+    label = "ADT";
+    style=filled;
+    color=oldlace;
+        ARRAY [shape = note][fillcolor = aqua][style="filled"]
+        FIFO [shape = note][fillcolor = aqua][style="filled"]
+}
+RAM->ARRAY [color=blue]
+RAM->FIFO
+subgraph cluster_Interfaces{
+    label = "Interfaces";
+    color=red
+}
+    UART->STREAM [color=chartreuse]
+    FIFO->STRING_READER [color=aqua]
+    STRING->CLI [color=aqua]
+    STRING_READER->CLI [color=aqua]
+    STREAM->CLI [color=aqua]
+    LOG->CLI [color=aqua]
+    CSV->CLI [color=aqua]
+RAM->CSV
+STRING->CSV
+TIME->LOG
+STREAM->LOG
+FIFO->LOG
+UART->LOG
+WRITER->LOG
+WRITER->STREAM
+LOG->CLI
+FIFO->WRITER
+UART->WRITER
+PARAM->BOOTLOADER
+FLASH->BOOTLOADER
+CLI->BOOTLOADER
+    CORE->BOOT
+FLASH->DEBUGGER
+    LED_MONO->INDICATION
+GPIO->LED
+GPIO->LED_MONO
+TIME->LED_MONO
+MATH->LED_MONO
+LED->LED_MONO
+TIME->LOG
+STREAM->LOG
+FIFO->LOG
+UART->LOG
+WRITER->LOG
+WRITER->STREAM
+LOG->CLI
+FIFO->WRITER
+UART->WRITER
+SCHEDULER->SUPER_CYCLE
+SCHEDULER [label="Scheduler"]
+LIMITER->SCHEDULER[color="green"]
+TIME->SCHEDULER[color="red"]
+FLASH->SCHEDULER[color="blue"]
+RAM->CRC8
+RAM->CRC16
+RAM->CRC32
+TIME->LIMITER
+FLASH->LIMITER
+RAM->INTERVAL
+ASM->MATH
+FLOAT->MATH
+}
