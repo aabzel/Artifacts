@@ -1,5 +1,0 @@
-Mon Jan 26 23:50:49 AST 2026
-90fa14e8a43659fd80e86df988ef1047deed2584e877219c7f8ab3c32b1b0719 *build/jz_f407vet6_can_gcc_m.bin
-098c3eff90f26873a525ea750a155075b0524838e63cba1d5991eba3641675b9 *build/jz_f407vet6_can_gcc_m.hex
-bc4a68fc59726c72b7bd37c01d0e575973c5c3f78d855d1d3b151cdd9d8198a1 *build/jz_f407vet6_can_gcc_m.elf
-037f2c6ce65a1b030ccf21c63104b28be5040f57a9fd9f5b805a4d85edcf5947 *build/jz_f407vet6_can_gcc_m.map
