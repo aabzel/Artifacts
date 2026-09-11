@@ -4,7 +4,7 @@ echo batdir=%batdir%
 cd %batdir%
 
 
-set CONVOLUTION_FILE=convolutionFIRrx8.csv
+set CONVOLUTION_FILE=convolutionFIRrx7.csv
 
 del %CONVOLUTION_FILE%
 
@@ -16,7 +16,7 @@ cd %batdir%
 
 set SONAR_NUM=0
 set PROBING_PULSE=RefChirpTD20msFs4345Fe7655A2kSF48k.wav
-set REC_FILE=Rx_8_UT48776us.wav
+set REC_FILE=Rx_7_T38393us.wav
 
 set options= 
 set options=%options% ll dds notice
